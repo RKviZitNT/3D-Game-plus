@@ -1,0 +1,10 @@
+^D:\PROJECTS\GITHUB\3D-GAME-PLUS\BUILD\CMAKEFILES\9FEA0D8BC2D228BA74BBF4DC9C1BD569\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/GitHub/3D-Game-plus -BD:/Projects/GitHub/3D-Game-plus/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Projects/GitHub/3D-Game-plus/build/3D-Game-plus.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
