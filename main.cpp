@@ -1,16 +1,22 @@
-#include "main.h"
+#include <SFML/Graphics.hpp>
+#include "src/config.h"
+#include "src/mazeGen.h"
 
-const int width = 800;
-const int height = 600;
+int main() {
+    unsigned int start_time =  clock();
+    generate();
+    unsigned int end_time = clock();
+    unsigned int search_time = end_time - start_time;
+    std::cout << search_time;
+    return 0;
+}
 
-class Ball
-{
+/*class Ball {
 public:
     int x, y, radius, dx, dy;
     sf::CircleShape circle;
 
-    Ball(int x, int y, int radius)
-    {
+    Ball(int x, int y, int radius) {
         this->x = x;
         this->y = y;
         this->radius = radius;
@@ -22,8 +28,7 @@ public:
         circle.setPosition(x, y);
     }
 
-    void move()
-    {
+    void move() {
         if (x + 2*radius > width || x < 0)
             dx *= -1;
         if (y + 2*radius > height || y < 0)
@@ -36,8 +41,7 @@ public:
     }
 };
 
-int main()
-{
+int main() {
     sf::RenderWindow window(sf::VideoMode(width, height), "My window");
     window.setFramerateLimit(360);
 
@@ -47,11 +51,9 @@ int main()
 
     Ball ball(width / 2, height / 2, 10);
 
-    while (window.isOpen())
-    {
+    while (window.isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event))
-        {
+        while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
@@ -62,8 +64,7 @@ int main()
         window.draw(ball.circle);
 
         elapsedTime = clock.restart();
-        if (elapsedTime < timePerFrame)
-        {
+        if (elapsedTime < timePerFrame) {
             sf::sleep(timePerFrame - elapsedTime);
         }
 
@@ -71,4 +72,4 @@ int main()
     }
 
     return 0;
-}
+}*/

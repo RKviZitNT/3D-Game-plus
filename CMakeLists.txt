@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.29)
 project(3DGAME)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -14,8 +14,8 @@ else()
     message(STATUS "Неизвестная операционная система")
 endif()
 
-find_package(SFML 2.6.1 COMPONENTS graphics audio REQUIRED)
+add_executable(3DGAME main.cpp src/mazeGen.cpp src/mazeGen.h src/config.h)
 
-add_executable(3DGAME main.cpp main.h)
+find_package(SFML 2.6.1 COMPONENTS graphics audio REQUIRED)
 
 target_link_libraries(3DGAME sfml-graphics sfml-audio)
