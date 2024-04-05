@@ -1,3 +1,3 @@
-D:/Projects/GitHub/3D-Game-plus/build/CMakeFiles/3D-Game-plus.dir
-D:/Projects/GitHub/3D-Game-plus/build/CMakeFiles/ALL_BUILD.dir
-D:/Projects/GitHub/3D-Game-plus/build/CMakeFiles/ZERO_CHECK.dir
+/home/rekvizit/Documents/GitHub/3D-Game-plus/build/CMakeFiles/3DGAME.dir
+/home/rekvizit/Documents/GitHub/3D-Game-plus/build/CMakeFiles/edit_cache.dir
+/home/rekvizit/Documents/GitHub/3D-Game-plus/build/CMakeFiles/rebuild_cache.dir

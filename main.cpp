@@ -7,6 +7,7 @@ class Ball
 {
 public:
     int x, y, radius, dx, dy;
+    sf::CircleShape circle;
 
     Ball(int x, int y, int radius)
     {
@@ -15,6 +16,10 @@ public:
         this->radius = radius;
         this->dx = 1;
         this->dy = 1;
+
+        circle.setRadius(radius);
+        circle.setFillColor(sf::Color::White);
+        circle.setPosition(x, y);
     }
 
     void move()
@@ -26,6 +31,8 @@ public:
 
         x += dx;
         y += dy;
+
+        circle.setPosition(x, y);
     }
 };
 
@@ -39,8 +46,6 @@ int main()
     sf::Time elapsedTime;
 
     Ball ball(width / 2, height / 2, 10);
-    sf::CircleShape circle(ball.radius);
-    circle.setFillColor(sf::Color::Green);
 
     while (window.isOpen())
     {
@@ -54,8 +59,7 @@ int main()
         window.clear(sf::Color::Black);
 
         ball.move();
-        circle.setPosition(ball.x, ball.y);
-        window.draw(circle);
+        window.draw(ball.circle);
 
         elapsedTime = clock.restart();
         if (elapsedTime < timePerFrame)
