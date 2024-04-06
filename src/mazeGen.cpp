@@ -1,5 +1,10 @@
-#include "config.h"
+#include <iostream>
+#include <vector>
+#include <random>
+#include <map>
+
 #include "mazeGen.h"
+#include "config.h"
 
 std::map<int, std::pair<int, int>> sides = {
     {0, {0, -1}},
@@ -97,13 +102,41 @@ void generatePath(int startX, int startY) {
         for (int j = -1; j < 2; j++) {
             for (int i = -1; i < 2; i++) {
                 if (x != 0 && x != mapWidth-1 && y != 0 && y != mapHeight-1)
-                    textMap[mapWidth*startY+startX] = noneSymbol;
+                    textMap[mapWidth*(startY+j)+(startX+i)] = noneSymbol;
+            }
+        }
+    }
+
+    int exitSpawn = random(0, 1);
+    std::vector<int> walls;
+    for (int i = 1; i < mapWidth - 2; i++) {
+        walls.push_back(i);
+    }
+
+    while(!walls.empty()) {
+        int index = random(0, walls.size() - 1);
+        int wall = walls[index];
+        walls.erase(walls.begin() + index);
+        if (exitSpawn == 0) {
+            if (textMap[mapWidth+wall] == noneSymbol) {
+                textMap[wall] = exitSymbol;
+                break;
+            }
+        }
+        else {
+            if (textMap[mapWidth*(mapHeight-2)+wall] == noneSymbol) {
+                textMap[mapWidth*(mapHeight-1)+wall] = exitSymbol;
+                break;
             }
         }
     }
 }
 
-void generate() {
+void generateMaze() {
     generatePath(mapWidth / 2, mapHeight / 2);
-    //printMap();
+    printMap();
+}
+
+std::vector<char>& getTextMap() {
+    return textMap;
 }

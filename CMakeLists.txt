@@ -14,7 +14,16 @@ else()
     message(STATUS "Неизвестная операционная система")
 endif()
 
-add_executable(3DGAME main.cpp src/mazeGen.cpp src/mazeGen.h src/config.h)
+add_executable(3DGAME
+    main.cpp
+    src/mazeGen.cpp
+    src/mazeGen.h
+    src/drawing.cpp
+    src/drawing.h
+    src/map.cpp
+    src/map.h
+    src/config.h
+)
 
 find_package(SFML 2.6.1 COMPONENTS graphics audio REQUIRED)
 

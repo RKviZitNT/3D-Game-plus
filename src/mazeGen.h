@@ -1,3 +1,7 @@
-#pragma once
+#ifndef MAZEGEN_H
+#define MAZEGEN_H
 
-void generate();
+void generateMaze();
+std::vector<char>& getTextMap();
+
+#endif
