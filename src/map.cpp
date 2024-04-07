@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 #include "map.h"
 #include "config.h"
@@ -11,7 +12,7 @@ void initWorldMap() {
     for (int j = 0; j < mapHeight; j++) {
         for (int i = 0; i < mapWidth; i++) {
             if (textMap[mapWidth * j + i] != noneSymbol) {
-                if (textMap[mapWidth * j + i] == '#') {
+                if (textMap[mapWidth * j + i] == wallSymbol) {
                     worldMap.push_back({i * tile, j * tile});
                 }
             }

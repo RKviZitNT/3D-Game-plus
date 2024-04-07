@@ -15,16 +15,7 @@ int main() {
     sf::Time elapsedTime;
 
     generateMaze();
-
-    std::cout << "what!" << std::endl;
-    std::vector<std::pair<int, int>>& worldMap = getWorldMap();
-    std::cout << worldMap.size() << std::endl;
-    for (int i = 0; i < worldMap.size(); i++) {
-        int x, y;
-        std::tie(x, y) = worldMap[i];
-        std::cout << x << ' ' << y << std::endl;
-    }
-    std::cout << "what?" << std::endl;
+    initWorldMap();
 
     Drawing drawing(window);
 
