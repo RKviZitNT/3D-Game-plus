@@ -1,9 +1,4 @@
-#include <vector>
-#include <iostream>
-
 #include "map.h"
-#include "config.h"
-#include "mazeGen.h"
 
 std::vector<char>& textMap = getTextMap();
 std::vector<std::pair<int, int>> worldMap;

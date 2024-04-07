@@ -3,21 +3,24 @@
 
 #include "src/config.h"
 #include "src/drawing.h"
+#include "src/player.h"
 #include "src/mazeGen.h"
 #include "src/map.h"
+#include "src/rayCasting.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(width, height), "My window");
     window.setFramerateLimit(fps);
 
     sf::Clock clock;
-    const sf::Time timePerFrame = sf::seconds(1.f / (float)fps);
+    const sf::Time timePerFrame = sf::seconds(1.f / static_cast<float>(fps));
     sf::Time elapsedTime;
 
     generateMaze();
     initWorldMap();
 
     Drawing drawing(window);
+    Player player;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -28,7 +31,9 @@ int main() {
 
         window.clear(sf::Color::Black);
 
+        player.move();
         drawing.background();
+        drawing.walls(player);
 
         elapsedTime = clock.restart();
         if (elapsedTime < timePerFrame) {

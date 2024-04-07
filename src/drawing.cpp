@@ -1,23 +1,27 @@
-#include <SFML/Graphics.hpp>
-
-#include "config.h"
 #include "drawing.h"
+#include <iostream>
 
-Drawing::Drawing(sf::RenderWindow& window) : window(window) {}
+Drawing::Drawing(sf::RenderWindow& window) : window(window), sky(sf::Vector2f(width, halfHeight)), floor(sf::Vector2f(width, halfHeight)) {
+    sky.setFillColor(sf::Color(135, 206, 235));
+    sky.setPosition(sf::Vector2f(0, 0));
+
+    floor.setFillColor(sf::Color(40, 40, 40));
+    floor.setPosition(sf::Vector2f(0, halfHeight)); 
+}
 
 void Drawing::background() {
-    sf::RectangleShape sky(sf::Vector2f(width, halfHeight));
-    sky.setFillColor(sf::Color(135, 206, 235));
-    sky.setPosition(0, 0);
-
-    sf::RectangleShape floor(sf::Vector2f(width, halfHeight));
-    floor.setFillColor(sf::Color(40, 40, 40));
-    floor.setPosition(0, halfHeight);
-
     window.draw(sky);
     window.draw(floor);
 }
 
-void Drawing::walls() {
-    
+void Drawing::walls(Player& player) {
+    std::vector<std::vector<double>> walls = rayCasting(player);
+    for (int i = 0; i < walls.size(); i++) {
+        int ray = static_cast<int>(walls[i][0]);
+        double projHeight = walls[i][1];
+        sf::RectangleShape projection(sf::Vector2f(scale, projHeight));
+        projection.setPosition(sf::Vector2f(ray * scale, halfHeight - (projHeight / 2)));
+        projection.setFillColor(sf::Color::Green);
+        window.draw(projection);
+    }
 }

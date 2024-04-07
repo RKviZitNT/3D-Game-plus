@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.29)
-project(3DGAME)
+project(3DGAME CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -22,6 +22,10 @@ add_executable(3DGAME
     src/drawing.h
     src/map.cpp
     src/map.h
+    src/player.cpp
+    src/player.h
+    src/rayCasting.cpp
+    src/rayCasting.h
     src/config.h
 )
 
