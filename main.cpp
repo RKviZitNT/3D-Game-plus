@@ -11,8 +11,7 @@
 #include "src/rayCasting.h"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(width, height), "My window");
-    //window.setFramerateLimit(fps);
+    sf::RenderWindow window(sf::VideoMode(width, height), "it`s real 3D game!");
 
     sf::Clock clock;
     const sf::Time timePerFrame = sf::seconds(1.f / static_cast<float>(fps));
@@ -58,41 +57,4 @@ int main() {
         window.draw(fpsText);
         window.display();
     }
-
-    // while (window.isOpen()) {
-    //     sf::Event event;
-    //     while (window.pollEvent(event)) {
-    //         if (event.type == sf::Event::Closed)
-    //             window.close();
-    //     }
-
-    //     timeSinceLastUpdate += clock.restart();
-
-    //     while (timeSinceLastUpdate > timePerFrame) {
-    //         timeSinceLastUpdate -= timePerFrame;
-
-    //         player.move();
-    //         drawing.background();
-    //         drawing.walls(player);
-
-    //         frameCount++;
-    //     }
-
-    //     // Обновление FPS примерно каждые секунду
-    //     if (clock.getElapsedTime() >= sf::seconds(1.f)) {
-    //         fpsText.setString("FPS: " + std::to_string(frameCount));
-    //         frameCount = 0;
-    //         clock.restart();
-    //     }
-
-    //     window.clear(sf::Color::Black);
-
-        
-
-    //     
-
-    //     window.display();
-    // }
-
-    // return 0;
 }
