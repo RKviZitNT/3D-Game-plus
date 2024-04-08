@@ -11,7 +11,7 @@ Player::Player() {
     this->side = playerSide;
 }
 
-std::pair<int, int> Player::getPos() {
+std::pair<double, double> Player::getPos() {
     return {x, y};
 }
 
@@ -35,13 +35,13 @@ void Player::move() {
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        this->x += speed * cosA;
-        this->y += -speed * sinA;
+        this->x += speed * sinA;
+        this->y += -speed * cosA;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        this->x += -speed * cosA;
-        this->y += speed * sinA;
+        this->x += -speed * sinA;
+        this->y += speed * cosA;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {

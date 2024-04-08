@@ -2,14 +2,14 @@
 
 std::vector<std::pair<int, int>>& worldMapCopy = getWorldMap();
 
-std::pair<int, int> mapping(int x, int y) {
-    return {(x / tile) * tile, (y / tile) * tile};
+std::pair<int, int> mapping(double x, double y) {
+    return {(static_cast<int>(x) / tile) * tile, (static_cast<int>(y) / tile) * tile};
 }
 
 std::vector<std::vector<double>> rayCasting(Player& player) {
     std::vector<std::vector<double>> walls;
-    int xo, yo, xm, ym;
-    double curAngle, sinA, cosA;
+    int xm, ym;
+    double xo, yo, curAngle, sinA, cosA;
     int x, y, dx, dy, yv, xh, offset;
     double depthV, depthH, depth;
     double projHeight;

@@ -14,6 +14,8 @@ else()
     message(STATUS "Неизвестная операционная система")
 endif()
 
+file(COPY "res" DESTINATION "${CMAKE_BINARY_DIR}")
+
 add_executable(3DGAME
     main.cpp
     src/mazeGen.cpp

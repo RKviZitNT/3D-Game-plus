@@ -8,12 +8,12 @@
 
 class Player {
 private:
-    int x, y, side;
-    double angle, speed, acceleration, sens, sinA, cosA;
+    int side;
+    double x, y, angle, speed, acceleration, sens, sinA, cosA;
     bool lockMouse = true;
 public:
     Player();
-    std::pair<int, int> getPos();
+    std::pair<double, double> getPos();
     double getAngle();
     void move();
 };
