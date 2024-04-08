@@ -128,7 +128,7 @@ void generatePath(int startX, int startY) {
 
 void generateMaze() {
     generatePath(mapWidth / 2, mapHeight / 2);
-    //printMap();
+    printMap();
 }
 
 std::vector<char>& getTextMap() {

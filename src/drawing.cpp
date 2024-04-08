@@ -15,10 +15,10 @@ void Drawing::background() {
 }
 
 void Drawing::walls(Player& player) {
-    std::vector<std::vector<double>> walls = rayCasting(player);
-    for (int i = 0; i < walls.size(); i++) {
-        int ray = static_cast<int>(walls[i][0]);
-        double projHeight = walls[i][1];
+    std::vector<std::vector<double>> wallsCopy = rayCasting(player);
+    for (int i = 0; i < wallsCopy.size(); i++) {
+        int ray = static_cast<int>(wallsCopy[i][0]);
+        double projHeight = wallsCopy[i][1];
         sf::RectangleShape projection(sf::Vector2f(scale, projHeight));
         projection.setPosition(sf::Vector2f(ray * scale, halfHeight - (projHeight / 2)));
         projection.setFillColor(sf::Color::Green);

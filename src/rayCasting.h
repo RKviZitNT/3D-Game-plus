@@ -1,7 +1,9 @@
 #ifndef RAYCASTING_H
 #define RAYCASTING_H
 
-#include <iostream>
+#include <algorithm>
+#include <utility>
+#include <vector>
 #include <cmath>
 
 #include "config.h"

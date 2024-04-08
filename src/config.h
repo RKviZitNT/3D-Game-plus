@@ -31,7 +31,7 @@ const unsigned int minBiomSize = 4;
 // ray casting
 const double fov = pi / 3;
 const double halfFov = fov / 2;
-const unsigned int numRays = width;
+const unsigned int numRays = width / 1;
 const unsigned int maxDepth = 20;
 const double deltaAngle = fov / numRays;
 const double dist = numRays / (2*std::tan(halfFov));
@@ -40,7 +40,7 @@ const double scale = width / numRays;
 
 // player
 const std::pair<int, int> playerPos = {((mapWidth / 2) * tile) + (tile / 2), ((mapHeight / 2) * tile) + (tile / 2)};
-const double playerAngle = 30 * degree;
+const double playerAngle = 0 * degree;
 const double playerSpeed = 2.5f * (60 / fps);
 const double playerAcceleration = 1.7;
 const double playerSens = 0.0005;

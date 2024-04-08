@@ -1,6 +1,6 @@
 #include "rayCasting.h"
 
-std::vector<std::pair<int, int>>& worldMap = getWorldMap();
+std::vector<std::pair<int, int>>& worldMapCopy = getWorldMap();
 
 std::pair<int, int> mapping(int x, int y) {
     return {(x / tile) * tile, (y / tile) * tile};
@@ -40,8 +40,8 @@ std::vector<std::vector<double>> rayCasting(Player& player) {
             yv = static_cast<int>(yo + depthV * sinA);
             tileV = mapping(x + dx, yv);
 
-            auto it = std::find(worldMap.begin(), worldMap.end(), tileV);
-            if (it != worldMap.end()) {
+            auto it = std::find(worldMapCopy.begin(), worldMapCopy.end(), tileV);
+            if (it != worldMapCopy.end()) {
                 break;
             }
             x += dx * tile;
@@ -60,24 +60,26 @@ std::vector<std::vector<double>> rayCasting(Player& player) {
             xh = static_cast<int>(xo + depthH * cosA);
             tileH = mapping(xh, y + dy);
 
-            auto it = std::find(worldMap.begin(), worldMap.end(), tileH);
-            if (it != worldMap.end()) {
+            auto it = std::find(worldMapCopy.begin(), worldMapCopy.end(), tileH);
+            if (it != worldMapCopy.end()) {
                 break;
             }
             y += dy * tile;
         }
 
         // projection
-        if (depthV > depthH) {
+        if (depthV < depthH) {
             depth = depthV;
             offset = yv;
+            //std::cout << 1;
         } else {
             depth = depthH;
             offset = xh;
+            //std::cout << 0;
         }
         offset = offset % tile;
 
-        // depth *= std::cos(player.getAngle() - curAngle);
+        depth *= std::cos(player.getAngle() - curAngle);
         projHeight = projCoeff / depth;
 
         walls.push_back(std::vector<double>{static_cast<double>(ray), projHeight});

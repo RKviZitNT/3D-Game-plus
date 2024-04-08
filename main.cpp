@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <utility>
+#include <vector>
 
 #include "src/config.h"
 #include "src/drawing.h"
