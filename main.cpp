@@ -17,15 +17,6 @@ int main() {
     const sf::Time timePerFrame = sf::seconds(1.f / static_cast<float>(fps));
     sf::Time elapsedTime;
 
-    sf::Font font;
-    font.loadFromFile("../res/fonts/arial.ttf");
-
-    sf::Text fpsText;
-    fpsText.setFont(font);
-    fpsText.setCharacterSize(24);
-    fpsText.setFillColor(sf::Color::Red);
-    fpsText.setPosition(10, 10);
-
     generateMaze();
     initWorldMap();
 
@@ -49,12 +40,11 @@ int main() {
         elapsedTime = clock.restart();
         if (elapsedTime < timePerFrame) {
             sf::sleep(timePerFrame - elapsedTime);
-            fpsText.setString(std::to_string(fps));
+            drawing.fps(fps);
         } else {
-            fpsText.setString(std::to_string(static_cast<int>(1.f / elapsedTime.asSeconds())));
+            drawing.fps(static_cast<int>(1.f / elapsedTime.asSeconds()));
         }
-        
-        window.draw(fpsText);
+
         window.display();
     }
 }

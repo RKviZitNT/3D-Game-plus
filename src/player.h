@@ -11,8 +11,8 @@
 class Player {
 private:
     int side;
-    double x, y, angle, speed, acceleration, sens, sinA, cosA, diff;
-    bool lockMouse = true;
+    double x, y, angle, speed, moveSpeed, acceleration, sens, sinA, cosA, diff;
+    bool lockMouse;
 
     sf::RenderWindow& window;
 

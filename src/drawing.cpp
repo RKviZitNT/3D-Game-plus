@@ -6,7 +6,13 @@ Drawing::Drawing(sf::RenderWindow& window) : window(window), sky(sf::Vector2f(wi
     sky.setPosition(sf::Vector2f(0, 0));
 
     floor.setFillColor(sf::Color(40, 40, 40));
-    floor.setPosition(sf::Vector2f(0, halfHeight)); 
+    floor.setPosition(sf::Vector2f(0, halfHeight));
+
+    font.loadFromFile("../res/fonts/arial.ttf");
+    fpsText.setFont(font);
+    fpsText.setCharacterSize(24);
+    fpsText.setFillColor(sf::Color::Red);
+    fpsText.setPosition(10, 10);
 }
 
 void Drawing::background() {
@@ -24,4 +30,9 @@ void Drawing::walls(Player& player) {
         projection.setFillColor(sf::Color::Green);
         window.draw(projection);
     }
+}
+
+void Drawing::fps(int value) {
+    fpsText.setString(std::to_string(value));
+    window.draw(fpsText);
 }
