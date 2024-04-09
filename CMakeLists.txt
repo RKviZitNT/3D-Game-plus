@@ -31,6 +31,6 @@ add_executable(3DGAME
     src/config.h
 )
 
-find_package(SFML 2.6.1 COMPONENTS graphics audio REQUIRED)
+find_package(SFML 2.6.1 COMPONENTS graphics audio system REQUIRED)
 
-target_link_libraries(3DGAME sfml-graphics sfml-audio)
+target_link_libraries(3DGAME sfml-graphics sfml-audio sfml-system)

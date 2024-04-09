@@ -5,12 +5,12 @@
 #include <vector>
 
 // game
-const unsigned int width = 1600;
-const unsigned int height = 900;
+const unsigned int width = 1280;
+const unsigned int height = 720;
 const unsigned int halfWidth = width / 2;
 const unsigned int halfHeight = height / 2;
 const unsigned int tile = 100;
-const unsigned int fps = 90;
+const unsigned int fps = 60;
 const double pi = std::acos(-1);
 const double degree = pi / 180;
 

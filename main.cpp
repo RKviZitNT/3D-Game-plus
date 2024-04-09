@@ -30,7 +30,7 @@ int main() {
     initWorldMap();
 
     Drawing drawing(window);
-    Player player;
+    Player player(window);
 
     while (window.isOpen()) {
         sf::Event event;

@@ -1,6 +1,6 @@
 #include "player.h"
 
-Player::Player() {
+Player::Player(sf::RenderWindow& window) : window(window) {
     std::tie(this->x, this->y) = playerPos;
     this->angle = playerAngle;
 
@@ -20,35 +20,43 @@ double Player::getAngle() {
 }
 
 void Player::move() {
+    keys();
+    mouse();
+}
+
+void Player::mouse() {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+    if (mousePos.x > 0 && mousePos.y > 0 && mousePos.x < width && mousePos.y < height) {
+        diff = mousePos.x - halfWidth;
+        sf::Mouse::setPosition(sf::Vector2i(halfWidth, halfHeight), window);
+        this->angle += diff * sens;
+    }
+}
+
+void Player::keys() {
     this->sinA = std::sin(angle);
     this->cosA = std::cos(angle);
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
         this->x += speed * cosA;
         this->y += speed * sinA;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
         this->x += -speed * cosA;
         this->y += -speed * sinA;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-    {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         this->x += speed * sinA;
         this->y += -speed * cosA;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         this->x += -speed * sinA;
         this->y += speed * cosA;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-    {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         this->angle -= 0.02;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-    {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         this->angle += 0.02;
     }
 }
