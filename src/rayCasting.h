@@ -1,8 +1,7 @@
 #ifndef RAYCASTING_H
 #define RAYCASTING_H
 
-#include <algorithm>
-#include <utility>
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include <cmath>
 
@@ -10,6 +9,7 @@
 #include "map.h"
 #include "player.h"
 
-std::vector<std::vector<double>> rayCasting(Player& player);
+void rayCasting(Player& player);
+std::vector<std::vector<sf::Vector2f>>& getRenderedWalls();
 
 #endif

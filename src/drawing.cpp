@@ -11,7 +11,7 @@ Drawing::Drawing(sf::RenderWindow& window) : window(window), sky(sf::Vector2f(wi
     font.loadFromFile("../res/fonts/arial.ttf");
     fpsText.setFont(font);
     fpsText.setCharacterSize(24);
-    fpsText.setFillColor(sf::Color::Red);
+    fpsText.setFillColor(sf::Color::Green);
     fpsText.setPosition(10, 10);
 }
 
@@ -21,13 +21,12 @@ void Drawing::background() {
 }
 
 void Drawing::walls(Player& player) {
-    std::vector<std::vector<double>> wallsCopy = rayCasting(player);
-    for (int i = 0; i < wallsCopy.size(); i++) {
-        int ray = static_cast<int>(wallsCopy[i][0]);
-        double projHeight = wallsCopy[i][1];
-        sf::RectangleShape projection(sf::Vector2f(scale, projHeight));
-        projection.setPosition(sf::Vector2f(ray * scale, halfHeight - (projHeight / 2)));
-        projection.setFillColor(sf::Color::Green);
+    std::vector<std::vector<sf::Vector2f>>& renderedWalls = getRenderedWalls();
+    sf::RectangleShape projection(sf::Vector2f(0, 0));
+    projection.setFillColor(sf::Color(101, 67, 33));
+    for (int i = 0; i < renderedWalls.size(); i++) {
+        projection.setSize(renderedWalls[i][0]);
+        projection.setPosition(renderedWalls[i][1]);
         window.draw(projection);
     }
 }

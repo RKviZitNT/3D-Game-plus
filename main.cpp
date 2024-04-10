@@ -34,6 +34,8 @@ int main() {
         sf::Time elapsedTime = clock.restart();
 
         player.move();
+        rayCasting(player);
+
         drawing.background();
         drawing.walls(player);
 

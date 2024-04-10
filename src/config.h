@@ -10,7 +10,7 @@ const int height = 720;
 const int halfWidth = width / 2;
 const int halfHeight = height / 2;
 const int tile = 100;
-const int fps = 60;
+const int fps = 240;
 const double pi = std::acos(-1);
 const double degree = pi / 180;
 

@@ -1,13 +1,15 @@
 #include "rayCasting.h"
 
 std::vector<std::pair<int, int>>& worldMapCopy = getWorldMap();
+std::vector<std::vector<double>> walls;
+std::vector<std::vector<sf::Vector2f>> renderWalls;
 
 std::pair<int, int> mapping(double x, double y) {
     return {(static_cast<int>(x) / tile) * tile, (static_cast<int>(y) / tile) * tile};
 }
 
-std::vector<std::vector<double>> rayCasting(Player& player) {
-    std::vector<std::vector<double>> walls;
+void rayCasting(Player& player) {
+    walls.clear();
     int xm, ym;
     double xo, yo, curAngle, sinA, cosA;
     int x, y, dx, dy, yv, xh, offset;
@@ -86,6 +88,14 @@ std::vector<std::vector<double>> rayCasting(Player& player) {
     
         curAngle += deltaAngle;
     }
+}
 
-    return walls;
+std::vector<std::vector<sf::Vector2f>>& getRenderedWalls() {
+    renderWalls.clear();
+    for (int i = 0; i < walls.size(); i++) {
+        int ray = walls[i][0];
+        double projHeight = walls[i][1];
+        renderWalls.push_back(std::vector<sf::Vector2f>{sf::Vector2f(scale, projHeight), sf::Vector2f(ray * scale, halfHeight - (projHeight / 2))});
+    }
+    return renderWalls;
 }
